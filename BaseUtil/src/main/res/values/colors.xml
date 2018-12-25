@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="SplashColor">#6AC9FF</color>
+
+    <color name="color3FBlack">#3F000000</color>
+    <color name="colorPrimary">#FF3F51B5</color>
+    <color name="colorToolBar">#222223</color>
+
+    <color name="colorBtnBackground">#29ABE2</color>
+
+    <color name="colorHalfWhite">#7FFFFFFF</color>
+    <color name="colorHalfBlack">#7F000000</color>
+    <color name="color30White">#4CFFFFFF</color>
+    <color name="MainMenu">#29ABE2</color>
+
+    <color name="color33Gray">#333333</color>
+    <color name="colorB0Gray">#B0B0B0</color>
+    <color name="colorCCGray">#CCCCCC</color>
+    <color name="colorB3Gray">#B3B3B3</color>
+    <color name="colorEEGray">#eeeeee</color>
+    <color name="colorC9Gray">#c9c9c9</color>
+    <color name="colorF2Gray">#F2F2F2</color>
+    <color name="colorD9Gray">#d9d9d9</color>
+    <color name="colorB6Gray">#B6B6B6</color>
+    <color name="color88Gray">#888888</color>
+    <color name="colorD6Gray">#D6D6D6</color>
+    <color name="colorE6Gray">#E6E6E6</color>
+    <color name="color99Gray">#999999</color>
+    <color name="colorE3Gray">#E3E3E3</color>
+    <color name="color74Gray">#74767b</color>
+    <color name="color4DGray">#4d4d4d</color>
+    <color name="color70Gray">#707070</color>
+    <color name="colorE0Gray">#E0E0E0</color>
+    <color name="color80Gray">#808080</color>
+    <color name="color1ABlack">#1A1A1A</color>
+
+    <color name="tab_textcolor_tr">#686767</color><!-- 选项栏字体颜色 -->
+    <color name="tab_textcolor_fa">#ff999999</color><!-- 选项栏字体颜色 -->
+
+<!-- -->
+
+    <color name="curr_bg1">#39B2A9</color>
+    <color name="curr_bg2">#896239</color>
+    <color name="curr_bg3">#E4386D</color>
+    <color name="curr_bg4">#F4901E</color>
+    <color name="curr_bg5">#658CEE</color>
+    <color name="curr_bg6">#cd1b57</color>
+    <color name="curr_bg7">#ed5f5f</color>
+    <color name="curr_bg8">#7d5da0</color>
+    <!--<color name="curr_bg5">#0071BC</color>-->
+
+    <color name="curr_bg14">#110E4F</color>
+    <color name="curr_bg15">#ED1C24</color>
+    <color name="curr_bg18">#ec605e</color>
+    <color name="curr_7Fbg17">#7fcd1b57</color>
+    <color name="curr_bg19">#6c8fff</color>
+
+
+    <color name="normalTextColor">#4d4d4d</color>
+    <!-- 比例颜色1 -->
+    <color name="range_color1">#29ABE2</color>
+    <!-- 比例颜色2 -->
+    <color name="range_color2">#8CC63F</color>
+    <!-- 比例颜色3 -->
+    <color name="range_color3">#FBB03B</color>
+    <!-- 比例颜色4 -->
+    <color name="range_color4">#F15A24</color>
+    <!-- 比例颜色5 -->
+    <color name="range_color5">#39B54A</color>
+    <!-- 比例颜色6 -->
+    <color name="range_color6">#EA3D3D</color>
+    <!-- 比例颜色7 -->
+    <color name="range_color7">#FF5F27</color>
+    <!-- 比例颜色8 -->
+    <color name="range_color8">#75C159</color>
+    <!-- 比例颜色9 -->
+    <color name="range_color9">#FFB533</color>
+
+
+    <color name="menuColor">#28b2ba</color>
+
+    <color name="sele_col1">#4d4d4d</color>
+    <!-- 选项字体颜色1 -->
+    <color name="sele_col2">#cccccc</color>
+    <!-- 选项字体颜色2 -->
+    <color name="sele_col3">#e6e6e6</color>
+
+    <color name="dialog_confirmText">#4d4d4d</color><!-- 弹窗确认字体颜色 -->
+
+
+    <color name="graph_line1">#0043A2</color>
+    <color name="graph_line2">#658CEE</color>
+    <color name="graph_line3">#EE5A24</color>
+
+
+    <color name="Burn_fat_line">#FCEE21</color>
+
+
+    <color name="blue">#1086F4</color>
+    <color name="blue_dark">#0000FF</color>
+    <color name="dark_red">#e64c4c</color>
+
+
+    <!--新添加-->
+    <color name="wear">#f49120</color>
+    <color name="no_wear">#f15b26</color>
+    <!--进度条-->
+    <!-- 圆形 进度条字体颜色-->
+    <color name="rect1">#ffffff</color>
+    <color name="rect2">#79ffffff</color>
+    <color name="lincharttext">#4e4e57</color>
+    <color name="rectbg">#f49122</color>
+    <color name="runbg">#343434</color>
+
+    <color name="tabSelectedTextColor">#49cebe</color>
+    <color name="tabTextColor">#969696</color>
+    <!-- 网页加载进度条颜色变化 -->
+    <color name="progress1">#499bce</color>
+    <color name="progress2">#499bce</color>
+    <color name="progress3">#499bce</color>
+    <color name="progress4">#41BFBF</color>
+    <color name="linecolor">#cccccc</color>
+    <color name="white">#FFFFFF</color>
+</resources>
