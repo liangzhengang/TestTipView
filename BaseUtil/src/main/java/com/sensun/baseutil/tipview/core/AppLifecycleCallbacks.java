@@ -62,7 +62,12 @@ public class AppLifecycleCallbacks extends BroadcastReceiver implements Applicat
         if (activity == mActivity) {
             activity.unregisterReceiver(this);
             activity.getApplication().unregisterActivityLifecycleCallbacks(this);
-//            mTipViewManager.destroy();
+     Set<String> set = views.keySet();
+        Iterator<String> iterator = set.iterator();
+        while (iterator.hasNext()) {
+            String key = iterator.next();
+            views.get(key).dismiss();
+        }
         }
     }
 
