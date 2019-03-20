@@ -20,8 +20,9 @@ public class AppLifecycleCallbacks extends BroadcastReceiver implements Applicat
     private static final String TAG = "AppLifecycleCallbacks";
     Activity mActivity;
     TipViewManager mTipViewManager;
-    public AppLifecycleCallbacks(Activity mActivity,TipViewManager tipViewManager) {
-        mTipViewManager=tipViewManager;
+
+    public AppLifecycleCallbacks(Activity mActivity, TipViewManager tipViewManager) {
+        mTipViewManager = tipViewManager;
         this.mActivity = mActivity;
     }
 
@@ -62,9 +63,16 @@ public class AppLifecycleCallbacks extends BroadcastReceiver implements Applicat
         if (activity == mActivity) {
             activity.unregisterReceiver(this);
             activity.getApplication().unregisterActivityLifecycleCallbacks(this);
-//            mTipViewManager.destroy();
+            if (!views.isEmpty()) {
+                Set<String> set = views.keySet();
+                Iterator<String> iterator = set.iterator();
+                while (iterator.hasNext()) {
+                    String key = iterator.next();
+                        views.get(key).dismiss();
+                    }
+                }
+            }
         }
-    }
 
     @Override
     public void addIntentFilter(String actionName, TipView view) {
