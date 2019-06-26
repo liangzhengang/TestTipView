@@ -6,13 +6,15 @@ import android.app.Application;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
-
 
 import com.sensun.baseutil.TipViewManager;
 import com.sensun.baseutil.tipview.ui.TipView;
 
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.Set;
 
 
@@ -20,7 +22,8 @@ public class AppLifecycleCallbacks extends BroadcastReceiver implements Applicat
     private static final String TAG = "AppLifecycleCallbacks";
     Activity mActivity;
     TipViewManager mTipViewManager;
-
+    IntentFilter mIntentFilter = new IntentFilter();
+    Map<String, TipView> views = new HashMap<>();
     public AppLifecycleCallbacks(Activity mActivity, TipViewManager tipViewManager) {
         mTipViewManager = tipViewManager;
         this.mActivity = mActivity;
@@ -40,7 +43,9 @@ public class AppLifecycleCallbacks extends BroadcastReceiver implements Applicat
 
     @Override
     public void onActivityResumed(Activity activity) {
+        if (activity == mActivity) {
 
+        }
     }
 
     @Override
@@ -68,11 +73,12 @@ public class AppLifecycleCallbacks extends BroadcastReceiver implements Applicat
                 Iterator<String> iterator = set.iterator();
                 while (iterator.hasNext()) {
                     String key = iterator.next();
-                        views.get(key).dismiss();
-                    }
+                    views.get(key).dismiss();
                 }
             }
+            mActivity = null;
         }
+    }
 
     @Override
     public void addIntentFilter(String actionName, TipView view) {
