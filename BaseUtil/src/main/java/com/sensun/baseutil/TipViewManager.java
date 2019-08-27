@@ -136,7 +136,7 @@ public class TipViewManager {
         return this;
     }
 
-    public TipViewManager getPermissionView() {
+    public boolean getPermissionView() {
         TipView tipView = getTipView(Manifest.permission.ACCESS_COARSE_LOCATION);
         boolean isGranted = PermissionUtils.hasPermission(Utils.getApp(), Manifest.permission.ACCESS_COARSE_LOCATION);
         if (isGranted) {
@@ -147,7 +147,7 @@ public class TipViewManager {
         if (tipViewCallback != null) {
             tipViewCallback.onPermission(isGranted);
         }
-        return this;
+        return isGranted;
     }
 
     public TipViewManager addPermission() {
@@ -197,7 +197,7 @@ public class TipViewManager {
         return gps || network;
     }
 
-    public void getBlueView() {
+    public boolean getBlueView() {
         TipView blueView = getTipView(BluetoothAdapter.ACTION_STATE_CHANGED);
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         if (!bluetoothAdapter.isEnabled()) {
@@ -205,13 +205,14 @@ public class TipViewManager {
         } else {
             blueView.dismiss();
         }
+        return bluetoothAdapter.isEnabled();
     }
 
     public TipView getTipView(String actionName) {
         return mAppLifecycleCallbacks.getTiView(actionName);
     }
 
-    public void getLocationView() {
+    public boolean getLocationView() {
         if (Build.VERSION.SDK_INT >= 23) {
             TipView gpsView = getTipView(LocationManager.PROVIDERS_CHANGED_ACTION);
             if (!checkGPSIsOpen()) {
@@ -220,6 +221,7 @@ public class TipViewManager {
                 gpsView.dismiss();
             }
         }
+        return checkGPSIsOpen();
     }
 
     public interface TipViewCallback {
