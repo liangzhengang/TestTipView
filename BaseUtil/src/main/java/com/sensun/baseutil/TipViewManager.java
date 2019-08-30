@@ -10,6 +10,7 @@ import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.Settings;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
@@ -77,8 +78,11 @@ public class TipViewManager {
         parentView.removeView(rootView);
     }
 
-    public TipViewManager addBlue() {
-        this.buildTip(BluetoothAdapter.ACTION_STATE_CHANGED, "BLUETOOTH  IS DISABLED", new TipView.OnTipViewListener() {
+    public TipViewManager addBlue(String str) {
+        if (TextUtils.isEmpty(str)) {
+            str = "BLUETOOTH  IS DISABLED";
+        }
+        this.buildTip(BluetoothAdapter.ACTION_STATE_CHANGED, str, new TipView.OnTipViewListener() {
             @Override
             public void onClick(TipView tipView) {
                 Intent intentOpen = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
@@ -112,8 +116,11 @@ public class TipViewManager {
         return new TipView(mActivity, tip, clickEvent);
     }
 
-    public TipViewManager addLocation() {
-        buildTip(LocationManager.PROVIDERS_CHANGED_ACTION, "LOCATION IS DISABLED", new TipView.OnTipViewListener() {
+    public TipViewManager addLocation(String str) {
+        if (TextUtils.isEmpty(str)) {
+            str = "LOCATION IS DISABLED";
+        }
+        buildTip(LocationManager.PROVIDERS_CHANGED_ACTION, str, new TipView.OnTipViewListener() {
             @Override
             public void onClick(TipView tipView) {
                 //跳转GPS设置界面
@@ -137,6 +144,7 @@ public class TipViewManager {
     }
 
     public boolean getPermissionView() {
+
         TipView tipView = getTipView(Manifest.permission.ACCESS_COARSE_LOCATION);
         boolean isGranted = PermissionUtils.hasPermission(Utils.getApp(), Manifest.permission.ACCESS_COARSE_LOCATION);
         if (isGranted) {
@@ -150,8 +158,11 @@ public class TipViewManager {
         return isGranted;
     }
 
-    public TipViewManager addPermission() {
-        buildTip(Manifest.permission.ACCESS_COARSE_LOCATION, "PERMISSION IS DISABLED", new TipView.OnTipViewListener() {
+    public TipViewManager addPermission(String str) {
+        if (TextUtils.isEmpty(str)) {
+            str = "PERMISSION IS DISABLED";
+        }
+        buildTip(Manifest.permission.ACCESS_COARSE_LOCATION, str, new TipView.OnTipViewListener() {
             @Override
             public void onClick(TipView tipView) {
                 PermissionUtils.permission(PermissionConstants.LOCATION).callback(new PermissionUtils.FullCallback() {
