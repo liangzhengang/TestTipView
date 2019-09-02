@@ -43,7 +43,7 @@ public class MainActivity extends Activity {
                 Toast.makeText(MainActivity.this,"onLocation",Toast.LENGTH_LONG).show();
             }
         });
-        tipViewManager.addBlue().addLocation().addPermission();
+        tipViewManager.addBlue("蓝牙","设置").addLocation("定位","开启").addPermission("权限","开启");
 
 
         tipViewManager.attachToLayoutHead(R.id.ll_layout);

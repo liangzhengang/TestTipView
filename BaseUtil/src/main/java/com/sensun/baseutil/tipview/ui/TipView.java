@@ -22,7 +22,7 @@ public class TipView extends LinearLayout {
     }
 
     void init() {
-       LayoutInflater.from(getContext()).inflate(R.layout.custom_view, this, true);
+        LayoutInflater.from(getContext()).inflate(R.layout.custom_view, this, true);
         expandableUnClickLayout = (ExpandableUnClickLayout) findViewById(R.id.layout);
         tvContent = (TextView) findViewById(R.id.tv_content);
         tvBtn = (TextView) findViewById(R.id.tv_btn);
@@ -47,6 +47,10 @@ public class TipView extends LinearLayout {
         tvContent.setText(tip);
     }
 
+    public void setBtn(String tip) {
+        tvBtn.setText(tip);
+    }
+
     public TipView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         init();
@@ -64,11 +68,12 @@ public class TipView extends LinearLayout {
 
     public void dismiss() {
         expandableUnClickLayout.ExpandClose();
-       setVisibility(GONE);
+        setVisibility(GONE);
     }
 
     public interface OnTipViewListener {
         void onClick(TipView tipView);
+
         void onTipStatus(TipView tipView);
     }
 

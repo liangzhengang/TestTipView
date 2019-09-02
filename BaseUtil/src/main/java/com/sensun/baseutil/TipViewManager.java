@@ -78,11 +78,11 @@ public class TipViewManager {
         parentView.removeView(rootView);
     }
 
-    public TipViewManager addBlue(String str) {
+    public TipViewManager addBlue(String str, String btn) {
         if (TextUtils.isEmpty(str)) {
             str = "BLUETOOTH  IS DISABLED";
         }
-        this.buildTip(BluetoothAdapter.ACTION_STATE_CHANGED, str, new TipView.OnTipViewListener() {
+        this.buildTip(BluetoothAdapter.ACTION_STATE_CHANGED, str,btn, new TipView.OnTipViewListener() {
             @Override
             public void onClick(TipView tipView) {
                 Intent intentOpen = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
@@ -112,15 +112,23 @@ public class TipViewManager {
         return this;
     }
 
+    public TipViewManager buildTip(String actionName, String tip, String btn, TipView.OnTipViewListener clickEvent) {
+        TipView tipView = addTip(tip, clickEvent);
+        tipView.setBtn(btn);
+        rootView.addView(tipView);
+        mAppLifecycleCallbacks.addIntentFilter(actionName, tipView);
+        return this;
+    }
+
     private TipView addTip(String tip, TipView.OnTipViewListener clickEvent) {
         return new TipView(mActivity, tip, clickEvent);
     }
 
-    public TipViewManager addLocation(String str) {
+    public TipViewManager addLocation(String str, String btn) {
         if (TextUtils.isEmpty(str)) {
             str = "LOCATION IS DISABLED";
         }
-        buildTip(LocationManager.PROVIDERS_CHANGED_ACTION, str, new TipView.OnTipViewListener() {
+        buildTip(LocationManager.PROVIDERS_CHANGED_ACTION, str,btn, new TipView.OnTipViewListener() {
             @Override
             public void onClick(TipView tipView) {
                 //跳转GPS设置界面
@@ -158,11 +166,11 @@ public class TipViewManager {
         return isGranted;
     }
 
-    public TipViewManager addPermission(String str) {
+    public TipViewManager addPermission(String str, String btn) {
         if (TextUtils.isEmpty(str)) {
             str = "PERMISSION IS DISABLED";
         }
-        buildTip(Manifest.permission.ACCESS_COARSE_LOCATION, str, new TipView.OnTipViewListener() {
+        buildTip(Manifest.permission.ACCESS_COARSE_LOCATION, str, btn, new TipView.OnTipViewListener() {
             @Override
             public void onClick(TipView tipView) {
                 PermissionUtils.permission(PermissionConstants.LOCATION).callback(new PermissionUtils.FullCallback() {
