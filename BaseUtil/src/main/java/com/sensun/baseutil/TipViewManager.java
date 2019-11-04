@@ -11,6 +11,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.provider.Settings;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
@@ -24,6 +25,8 @@ import com.sensun.baseutil.tipview.core.AppLifecycleCallbacks;
 import com.sensun.baseutil.tipview.ui.TipView;
 
 import java.util.List;
+
+import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
 
 
 public class TipViewManager {
@@ -82,7 +85,7 @@ public class TipViewManager {
         if (TextUtils.isEmpty(str)) {
             str = "BLUETOOTH  IS DISABLED";
         }
-        this.buildTip(BluetoothAdapter.ACTION_STATE_CHANGED, str,btn, new TipView.OnTipViewListener() {
+        this.buildTip(BluetoothAdapter.ACTION_STATE_CHANGED, str, btn, new TipView.OnTipViewListener() {
             @Override
             public void onClick(TipView tipView) {
                 Intent intentOpen = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
@@ -128,7 +131,7 @@ public class TipViewManager {
         if (TextUtils.isEmpty(str)) {
             str = "LOCATION IS DISABLED";
         }
-        buildTip(LocationManager.PROVIDERS_CHANGED_ACTION, str,btn, new TipView.OnTipViewListener() {
+        buildTip(LocationManager.PROVIDERS_CHANGED_ACTION, str, btn, new TipView.OnTipViewListener() {
             @Override
             public void onClick(TipView tipView) {
                 //跳转GPS设置界面
@@ -166,6 +169,8 @@ public class TipViewManager {
         return isGranted;
     }
 
+    private static final String TAG = "TipViewManager";
+
     public TipViewManager addPermission(String str, String btn) {
         if (TextUtils.isEmpty(str)) {
             str = "PERMISSION IS DISABLED";
@@ -177,6 +182,7 @@ public class TipViewManager {
                     @Override
                     public void onGranted(List<String> permissionsGranted) {
                         //权限授权成功
+                        Log.d(TAG, "onGranted: " + permissionsGranted.get(0));
                         Intent intent = new Intent(Manifest.permission.ACCESS_COARSE_LOCATION);
                         mActivity.sendBroadcast(intent);
                     }
@@ -186,6 +192,7 @@ public class TipViewManager {
                         if (permissionsDeniedForever.size() > 0) {
                             Toast.makeText(Utils.getApp(), "The location permissions are not allowed. Please grant permission to the app information interface", Toast.LENGTH_LONG).show();
                             Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                            intent.setFlags(FLAG_ACTIVITY_NEW_TASK);
                             Uri uri = Uri.fromParts("package", Utils.getApp().getPackageName(), null);
                             intent.setData(uri);
                             Utils.getApp().startActivity(intent);
