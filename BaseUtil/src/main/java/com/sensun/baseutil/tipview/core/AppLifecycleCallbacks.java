@@ -31,14 +31,14 @@ public class AppLifecycleCallbacks extends BroadcastReceiver implements Applicat
 
     @Override
     public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
-
+             if (activity == mActivity) {
+            activity.registerReceiver(this, mIntentFilter);
+        }
     }
 
     @Override
     public void onActivityStarted(Activity activity) {
-        if (activity == mActivity) {
-            activity.registerReceiver(this, mIntentFilter);
-        }
+      
     }
 
     @Override
