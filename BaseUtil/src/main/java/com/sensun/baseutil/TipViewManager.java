@@ -28,6 +28,12 @@ import java.util.List;
 
 import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
 
+/**
+ *Tip:
+ *@author liangzg
+ *@date 创建时间 2021/5/28
+ *
+ */
 
 public class TipViewManager {
     private static Application myApp;
@@ -41,14 +47,26 @@ public class TipViewManager {
         this.tipViewCallback = tipViewCallback;
         return this;
     }
-
+/**
+ *
+ */
     private TipViewManager(Activity mActivity) {
         this.mActivity = mActivity;
+
+
+
         mAppLifecycleCallbacks = new AppLifecycleCallbacks(mActivity, this);
         myApp.registerActivityLifecycleCallbacks(mAppLifecycleCallbacks);
         rootView = (LinearLayout) LayoutInflater.from(mActivity).inflate(R.layout.custom_layout, null).findViewById(R.id.ll_layout);
 
     }
+
+    /**
+     *Tip:
+     *@author liangzg
+     *@date 创建时间 2021/5/28
+     *
+     */
 
     public static TipViewManager newInstance(Activity activity) {
         if (activity == null) {
